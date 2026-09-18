@@ -1,0 +1,14 @@
+{
+  "name": "memai-long-term-memory-chatbot",
+  "version": "1.0.0",
+  "description": "Production AI Chatbot with Long-Term Vector Memory powered by Google Gemini and Supabase pgvector",
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue.bold,green.bold\" \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
