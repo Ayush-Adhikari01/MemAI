@@ -127,12 +127,12 @@ export const MemoryModal = ({ isOpen, onClose, onSave, editingMemory = null }) =
               onChange={(e) => setMemoryType(e.target.value)}
               className={`w-full p-3 rounded-xl border text-xs font-mono focus:outline-none ${
                 isDark
-                  ? 'bg-midnight-900 border-white/[0.08] text-slate-200'
-                  : 'bg-slate-50 border-slate-200 text-slate-800'
+                  ? 'bg-[#060913] border-white/[0.1] text-white focus:border-violet-500/50'
+                  : 'bg-slate-50 border-slate-200 text-slate-800 focus:border-violet-500/50'
               }`}
             >
               {MEMORY_TYPES.map((t) => (
-                <option key={t.value} value={t.value} className={isDark ? 'bg-midnight-900' : 'bg-white'}>
+                <option key={t.value} value={t.value} className={isDark ? 'bg-[#060913] text-white' : 'bg-white text-slate-900'}>
                   {t.label}
                 </option>
               ))}

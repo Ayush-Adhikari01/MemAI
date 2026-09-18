@@ -163,7 +163,9 @@ export const MemoryList = () => {
       <MemoryStats stats={stats} />
 
       {/* Filter and Search Bar */}
-      <div className="p-4 rounded-2xl glass-panel mb-7 space-y-3.5 shadow-sm">
+      <div className={`p-4 rounded-2xl mb-7 space-y-3.5 shadow-sm border ${
+        isDark ? 'bg-[#0a0e1c] border-white/[0.08]' : 'bg-white/95 border-slate-200'
+      }`}>
         <div className="flex flex-col sm:flex-row gap-3">
           {/* Search Input */}
           <div className="relative flex-1">
@@ -175,27 +177,27 @@ export const MemoryList = () => {
               placeholder="Search memories by keyword, entity, or topic..."
               className={`w-full pl-10 pr-4 py-2.5 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-violet-500/30 ${
                 isDark
-                  ? 'bg-midnight-950/80 border border-white/[0.07] text-slate-100 placeholder-slate-500'
-                  : 'bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400'
+                  ? 'bg-[#060913] border border-white/[0.1] text-white placeholder-slate-500 focus:border-violet-500/60'
+                  : 'bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:border-violet-500/60'
               }`}
             />
           </div>
 
           {/* Status selector */}
           <div className="flex items-center gap-2">
-            <span className={`text-xs font-mono ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Status:</span>
+            <span className={`text-xs font-mono font-medium ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Status:</span>
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className={`px-3 py-2 rounded-xl text-xs font-mono focus:outline-none ${
+              className={`px-3.5 py-2.5 rounded-xl text-xs font-mono font-medium focus:outline-none cursor-pointer border ${
                 isDark
-                  ? 'bg-midnight-950/80 border border-white/[0.07] text-slate-200'
-                  : 'bg-slate-50 border border-slate-200 text-slate-800'
+                  ? 'bg-[#060913] border-white/[0.1] text-white focus:border-violet-500/60'
+                  : 'bg-slate-50 border-slate-200 text-slate-800 focus:border-violet-500/60'
               }`}
             >
-              <option value="active">Active Only</option>
-              <option value="outdated">Superseded Only</option>
-              <option value="all">All Records</option>
+              <option value="active" className={isDark ? 'bg-[#060913] text-white' : 'bg-white text-slate-900'}>Active Only</option>
+              <option value="outdated" className={isDark ? 'bg-[#060913] text-white' : 'bg-white text-slate-900'}>Superseded Only</option>
+              <option value="all" className={isDark ? 'bg-[#060913] text-white' : 'bg-white text-slate-900'}>All Records</option>
             </select>
           </div>
         </div>
@@ -207,12 +209,12 @@ export const MemoryList = () => {
             <button
               key={cat.id}
               onClick={() => setSelectedType(cat.id)}
-              className={`px-3 py-1.5 rounded-xl whitespace-nowrap font-medium text-xs transition-all duration-200 cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl whitespace-nowrap font-medium text-xs transition-all duration-200 cursor-pointer border ${
                 selectedType === cat.id
-                  ? 'running-rgb-bg text-white shadow-glow-sm font-semibold'
+                  ? 'running-rgb-bg text-white shadow-glow-sm font-semibold border-transparent'
                   : isDark
-                    ? 'bg-white/[0.03] text-slate-400 hover:text-white hover:bg-white/[0.07]'
-                    : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
+                    ? 'bg-[#060913] border-white/[0.08] text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-violet-500/30'
+                    : 'bg-slate-100 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
               }`}
             >
               {cat.label}
